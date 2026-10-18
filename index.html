@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#c9e8ef">
+<meta name="description" content="Meet Nimbo, a tiny cloud in a yellow raincoat. Explore rain, pocket sunsets, dream forecasts, and a little sky that plays back.">
+<title>Nimbo — Baby’s First Website</title>
+<style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,a{font:inherit}button{cursor:pointer}img,svg{max-width:100%}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nimbo-app *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+:root { --button-outline: rgba(0, 0, 0, 0.1); --badge-outline: rgba(0, 0, 0, 0.05); --opaque-button-border-intensity: -8; --elevate-1: rgba(0, 0, 0, 0.03); --elevate-2: rgba(0, 0, 0, 0.08); --background: 42 67% 96%; --foreground: 213 31% 27%; --border: 40 37% 84%; --card: 40 60% 98%; --card-foreground: 213 31% 27%; --card-border: 40 37% 84%; --sidebar: 42 67% 96%; --sidebar-foreground: 213 31% 27%; --sidebar-border: 40 37% 84%; --sidebar-primary: 199 70% 64%; --sidebar-primary-foreground: 213 31% 20%; --sidebar-accent: 43 92% 82%; --sidebar-accent-foreground: 213 31% 27%; --sidebar-ring: 199 70% 64%; --popover: 40 60% 98%; --popover-foreground: 213 31% 27%; --popover-border: 40 37% 84%; --primary: 199 70% 64%; --primary-foreground: 213 31% 20%; --secondary: 43 92% 82%; --secondary-foreground: 213 31% 27%; --muted: 42 38% 90%; --muted-foreground: 213 18% 50%; --accent: 350 75% 83%; --accent-foreground: 213 31% 27%; --destructive: 3 65% 60%; --destructive-foreground: 40 60% 98%; --input: 40 37% 84%; --ring: 199 70% 64%; --chart-1: 199 70% 64%; --chart-2: 43 92% 72%; --chart-3: 350 75% 73%; --chart-4: 163 34% 66%; --chart-5: 261 35% 72%; --app-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; --app-font-serif: 'Palatino Linotype', 'Book Antiqua', serif; --app-font-mono: 'Courier New', monospace; --radius: 1.25rem; --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-sm: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-md: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-lg: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); --tracking-normal: 0em; --spacing: 0.25rem; --sidebar-primary-border: hsl(
+    from hsl(var(--sidebar-primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  ); --sidebar-accent-border: hsl(
+    from hsl(var(--sidebar-accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  ); --primary-border: hsl(
+    from hsl(var(--primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  ); --secondary-border: hsl(
+    from hsl(var(--secondary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  ); --muted-border: hsl(
+    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
+      alpha
+  ); --accent-border: hsl(
+    from hsl(var(--accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  ); --destructive-border: hsl(
+    from hsl(var(--destructive)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  ); }
+
+.dark { --button-outline: rgba(255, 255, 255, 0.1); --badge-outline: rgba(255, 255, 255, 0.05); --opaque-button-border-intensity: 9; --elevate-1: rgba(255, 255, 255, 0.04); --elevate-2: rgba(255, 255, 255, 0.09); --background: 225 34% 17%; --foreground: 42 52% 91%; --border: 223 24% 32%; --card: 225 30% 22%; --card-foreground: 42 52% 91%; --card-border: 223 24% 32%; --sidebar: 225 34% 17%; --sidebar-foreground: 42 52% 91%; --sidebar-border: 223 24% 32%; --sidebar-primary: 198 57% 72%; --sidebar-primary-foreground: 225 34% 17%; --sidebar-accent: 44 75% 72%; --sidebar-accent-foreground: 225 34% 17%; --sidebar-ring: 198 57% 72%; --popover: 225 30% 22%; --popover-foreground: 42 52% 91%; --popover-border: 223 24% 32%; --primary: 198 57% 72%; --primary-foreground: 225 34% 17%; --secondary: 44 75% 72%; --secondary-foreground: 225 34% 17%; --muted: 223 24% 30%; --muted-foreground: 218 17% 70%; --accent: 350 58% 75%; --accent-foreground: 225 34% 17%; --destructive: 3 65% 60%; --destructive-foreground: 42 52% 91%; --input: 223 24% 32%; --ring: 198 57% 72%; --chart-1: 198 57% 72%; --chart-2: 44 75% 72%; --chart-3: 350 58% 75%; --chart-4: 163 34% 66%; --chart-5: 261 35% 72%; --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-sm: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-md: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-lg: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0); --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); }
+
+@layer base {
+  * { border-color: hsl(var(--border)); }
+  body { background-color: hsl(var(--background)); font-family: var(--app-font-sans); color: hsl(var(--foreground)); -webkit-font-smoothing: antialiased; }
+}
+
+@layer utilities {
+  input[type="search"]::-webkit-search-cancel-button { display: none; }
+  [contenteditable][data-placeholder]:empty::before { content: attr(data-placeholder); color: hsl(var(--muted-foreground)); pointer-events: none; }
+  .toggle-elevate::before, .toggle-elevate-2::before { content: ""; pointer-events: none; position: absolute; inset: 0px; border-radius: inherit; z-index: -1; }
+  .toggle-elevate.toggle-elevated::before { background-color: var(--elevate-2); }
+  .border.toggle-elevate::before { inset: -1px; }
+  .hover-elevate:not(.no-default-hover-elevate), .active-elevate:not(.no-default-active-elevate), .hover-elevate-2:not(.no-default-hover-elevate), .active-elevate-2:not(.no-default-active-elevate) { position: relative; z-index: 0; }
+  .hover-elevate:not(.no-default-hover-elevate)::after, .active-elevate:not(.no-default-active-elevate)::after, .hover-elevate-2:not(.no-default-hover-elevate)::after, .active-elevate-2:not(.no-default-active-elevate)::after { content: ""; pointer-events: none; position: absolute; inset: 0px; border-radius: inherit; z-index: 999; }
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after, .active-elevate:active:not(.no-default-active-elevate)::after { background-color: var(--elevate-1); }
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after, .active-elevate-2:active:not(.no-default-active-elevate)::after { background-color: var(--elevate-2); }
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after, .border.active-elevate:not(.no-active-interaction-elevate)::after, .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after, .border.active-elevate-2:not(.no-active-interaction-elevate)::after, .border.hover-elevate:not(.no-hover-interaction-elevate)::after { inset: -1px; }
+}
+
+:root { color-scheme: light; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body { margin: 0px; background: rgb(248, 242, 229); font-family: var(--app-font-sans); }
+
+button, a { -webkit-tap-highlight-color: transparent; }
+
+button { font: inherit; }
+
+.nimbo-app { --ink: #40596b; --muted-ink: #718391; --cream: #f8f2e5; --paper: #fffaf0; --sky: #c9e8ef; --sky-deep: #9acddd; --yellow: #f5d36c; --pink: #f3c5c0; --line: #e4d9c4; --soft-shadow: 0 18px 45px rgba(84, 108, 117, .11); min-height: 100dvh; overflow: hidden; color: var(--ink); background: var(--cream); transition: background-color 0.8s, color 0.8s; }
+
+.nimbo-app.night { color-scheme: dark; --ink: #edf0e4; --muted-ink: #bac7cf; --cream: #26334a; --paper: #303e56; --sky: #3a5269; --sky-deep: #546f82; --yellow: #f1d17c; --pink: #d795a6; --line: #536178; --soft-shadow: 0 18px 45px rgba(10, 18, 32, .22); }
+
+.paper-grain { position: fixed; inset: 0px; z-index: 20; pointer-events: none; opacity: 0.15; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E"); mix-blend-mode: multiply; }
+
+.night .paper-grain { opacity: 0.08; mix-blend-mode: screen; }
+
+.wake-screen { position: fixed; inset: 0px; z-index: 50; display: flex; flex-direction: column; gap: 15px; align-items: center; justify-content: center; color: rgb(82, 111, 123); background: rgb(232, 246, 245); font-family: var(--app-font-serif); font-size: 19px; animation: 0.65s ease 1.05s 1 normal forwards running wake-away; }
+
+.wake-screen .little-cloud { width: 76px; color: rgb(255, 253, 248); animation: 1.1s linear 0s infinite normal none running wake-cloud-drift; }
+
+.wake-stars { color: rgb(233, 189, 89); font-size: 15px; letter-spacing: 7px; }
+
+.is-waking .site-header, .is-waking .scene, .is-waking .paper-section, .is-waking .ending-section, .is-waking .site-footer { opacity: 0; }
+
+.is-ready .site-header, .is-ready .scene, .is-ready .paper-section, .is-ready .ending-section, .is-ready .site-footer { animation: 0.9s ease 0s 1 normal both running arrive; }
+
+.site-header { position: relative; z-index: 5; height: 82px; max-width: 1180px; margin: auto; padding: 0px 34px; display: flex; align-items: center; justify-content: space-between; }
+
+.wordmark, .footer-mark { color: var(--ink); text-decoration: none; font-weight: 900; letter-spacing: -0.08em; font-size: 27px; }
+
+.wordmark span { margin-left: 4px; font-size: 19px; color: rgb(239, 189, 85); }
+
+.site-header nav { display: flex; gap: clamp(20px, 4vw, 55px); }
+
+.site-header nav a { text-decoration: none; color: var(--muted-ink); font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
+
+.site-header nav a:hover { color: var(--ink); }
+
+.mood-toggle { min-height: 41px; padding: 0px 15px; border: 1px solid var(--line); border-radius: 999px; display: inline-flex; align-items: center; gap: 9px; color: var(--ink); background: var(--paper); cursor: pointer; font-size: 12px; transition: transform 0.2s, background 0.3s; }
+
+.mood-toggle:hover { transform: translateY(-2px); }
+
+.toggle-sun { color: rgb(215, 169, 73); font-size: 19px; }
+
+.scene { position: relative; background: var(--sky); transition: background-color 0.8s; }
+
+.hero { min-height: 630px; overflow: hidden; background: linear-gradient(rgb(204, 235, 240) 0%, rgb(228, 242, 233) 77%, rgb(214, 233, 215) 100%); }
+
+.night .hero { background: linear-gradient(rgb(53, 67, 93) 0%, rgb(74, 90, 112) 75%, rgb(72, 94, 107) 100%); }
+
+.hero::before { content: ""; position: absolute; width: 570px; height: 570px; top: -300px; right: 2%; border-radius: 50%; background: rgba(255, 255, 255, 0.2); }
+
+.hero-inner { position: relative; max-width: 1130px; min-height: 570px; padding: 64px 36px 40px; margin: auto; display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: 24px; }
+
+.hero-copy { z-index: 1; padding: 0px 0px 35px 4%; }
+
+.eyebrow { margin: 0px 0px 19px; color: rgb(115, 145, 155); font-size: 10px; font-weight: 800; letter-spacing: 0.16em; }
+
+.night .eyebrow { color: rgb(193, 213, 214); }
+
+.tiny-spark { color: rgb(228, 175, 78); font-size: 16px; vertical-align: -1px; margin-right: 5px; }
+
+.hero h1 { margin: 0px; font-family: var(--app-font-serif); font-size: clamp(60px, 8vw, 98px); line-height: 0.86; letter-spacing: -0.065em; font-weight: 500; }
+
+.hero h1 span { font-style: italic; color: rgb(86, 156, 179); }
+
+.night .hero h1 span { color: rgb(169, 212, 217); }
+
+.tagline { margin: 26px 0px 25px; font-family: var(--app-font-serif); font-size: clamp(25px, 3vw, 34px); line-height: 1.2; color: rgb(88, 117, 135); }
+
+.night .tagline { color: rgb(215, 225, 221); }
+
+.hand-link { display: inline-flex; gap: 14px; align-items: center; padding: 0px 0px 7px; border-bottom: 1px solid rgb(132, 168, 170); text-decoration: none; color: var(--ink); font-size: 13px; }
+
+.hand-link span { font-size: 18px; transition: transform 0.2s; }
+
+.hand-link:hover span { transform: translateY(4px); }
+
+.hero-sky { position: relative; height: 460px; display: grid; place-items: center; }
+
+.hero-cloud-wrap { width: min(100%, 410px); margin-top: -14px; z-index: 1; }
+
+.nimbo-character { width: 100%; padding: 0px; border: 0px; background: transparent; cursor: pointer; }
+
+.nimbo-character svg { display: block; width: 100%; overflow: visible; filter: drop-shadow(rgba(75, 110, 122, 0.08) 0px 14px 8px); }
+
+.nimbo-character:focus-visible { outline: rgb(115, 154, 170) dashed 2px; outline-offset: 5px; border-radius: 45%; }
+
+.buddy-cloud { transform-origin: 50% 65%; animation: 4s ease-in-out 0s infinite normal none running cloud-float; }
+
+.raincoat { transform-origin: 50% 35%; animation: 4s ease-in-out 0s infinite normal none running coat-sway; }
+
+.raincoat-note { position: absolute; right: 1%; top: 36%; padding: 10px 13px; border: 1px solid rgba(132, 162, 160, 0.38); border-radius: 45% 48% 42% 55%; color: rgb(103, 131, 139); font-family: var(--app-font-serif); font-size: 13px; line-height: 1.25; transform: rotate(8deg); }
+
+.raincoat-note::after { content: ""; position: absolute; left: -14px; bottom: 5px; width: 17px; height: 1px; background: rgb(142, 170, 169); transform: rotate(-45deg); }
+
+.watch-note { position: absolute; bottom: 6px; margin: 0px; color: rgb(112, 140, 147); font-family: var(--app-font-serif); font-size: 15px; font-style: italic; }
+
+.night .watch-note, .night .raincoat-note { color: rgb(213, 222, 216); }
+
+.orbit { position: absolute; color: rgb(237, 189, 87); }
+
+.orbit-one { top: 22%; left: 17%; font-size: 27px; }
+
+.orbit-two { top: 16%; right: 20%; color: rgb(244, 184, 169); font-size: 28px; }
+
+.orbit-three { bottom: 21%; left: 15%; font-size: 30px; }
+
+.scroll-cue { position: absolute; bottom: 19px; left: 50%; display: flex; gap: 10px; align-items: center; transform: translateX(-50%); color: rgb(116, 145, 152); text-decoration: none; text-transform: uppercase; letter-spacing: 0.18em; font-size: 9px; }
+
+.scroll-cue span { width: 26px; height: 1px; background: currentcolor; }
+
+.moon-button { position: absolute; top: 28px; right: max(34px, -562px + 50vw); width: 43px; height: 43px; border: 1px solid rgba(95, 130, 144, 0.28); border-radius: 50%; color: rgb(231, 183, 81); background: rgba(255, 255, 255, 0.4); cursor: pointer; font-size: 22px; transition: transform 0.2s, background 0.2s; }
+
+.moon-button:hover { transform: rotate(-18deg) scale(1.08); background: rgba(255, 255, 255, 0.75); }
+
+.secret-note { position: absolute; z-index: 4; right: max(6%, -570px + 50vw); top: 78px; width: 205px; padding: 11px 13px 13px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); color: var(--ink); box-shadow: var(--soft-shadow); text-align: center; font-family: var(--app-font-serif); font-size: 12px; animation: 0.3s ease 0s 1 normal both running arrive; }
+
+.secret-buddy { width: 105px; display: block; margin: -26px auto 2px; }
+
+.paper-section { background: var(--paper); transition: background-color 0.8s; }
+
+.intro-section { position: relative; display: grid; grid-template-columns: 1fr 0.88fr; align-items: center; gap: clamp(36px, 9vw, 115px); padding: 125px max(8vw, -525px + 50vw) 128px; }
+
+.section-stamp { position: absolute; top: 45px; left: max(8vw, -525px + 50vw); width: 75px; height: 75px; border: 1px dashed rgb(215, 183, 102); border-radius: 50%; display: grid; place-items: center; color: rgb(185, 148, 78); font-family: var(--app-font-serif); text-align: center; font-size: 10px; line-height: 1.2; transform: rotate(-12deg); }
+
+.intro-copy { max-width: 440px; padding-top: 24px; }
+
+.intro-copy h2, .story-heading h2, .projects-intro h2, .play-copy h2, .ending-section h2 { margin: 0px 0px 25px; font-family: var(--app-font-serif); font-size: clamp(44px, 5vw, 66px); line-height: 0.98; font-weight: 500; letter-spacing: -0.045em; }
+
+.intro-copy h2 em, .story-heading h2 em, .projects-intro h2 em, .play-copy h2 em, .ending-section h2 em { color: rgb(99, 156, 175); font-weight: 400; }
+
+.night .intro-copy h2 em, .night .story-heading h2 em, .night .projects-intro h2 em, .night .play-copy h2 em, .night .ending-section h2 em { color: rgb(166, 206, 211); }
+
+.intro-copy > p:not(.eyebrow) { color: var(--muted-ink); font-family: var(--app-font-serif); font-size: 16px; line-height: 1.8; }
+
+.signature { margin-top: 28px; color: var(--muted-ink); font-family: var(--app-font-serif); font-size: 13px; line-height: 1.1; transform: rotate(-4deg); }
+
+.signature span { display: inline-block; color: rgb(119, 158, 157); font-size: 27px; font-style: italic; }
+
+.garden-art { position: relative; width: 100%; max-width: 430px; justify-self: center; padding: 12px 12px 28px; background: rgb(238, 226, 200); transform: rotate(2deg); box-shadow: rgba(79, 83, 70, 0.11) 0px 9px 23px; }
+
+.garden-window { position: relative; height: 290px; overflow: hidden; background: linear-gradient(rgb(157, 200, 211) 0px, rgb(157, 200, 211) 53%, rgb(214, 225, 201) 53%); }
+
+.window-moon { position: absolute; top: 25px; right: 50px; width: 52px; height: 52px; border-radius: 50%; background: rgb(247, 218, 136); box-shadow: rgba(255, 247, 208, 0.15) 0px 0px 0px 12px; }
+
+.window-cloud { position: absolute; width: 65px; height: 20px; border-radius: 30px; background: rgb(255, 249, 235); }
+
+.window-cloud::before, .window-cloud::after { content: ""; position: absolute; bottom: 4px; border-radius: 50%; background: inherit; }
+
+.window-cloud::before { left: 12px; width: 28px; height: 28px; }
+
+.window-cloud::after { left: 31px; width: 22px; height: 22px; }
+
+.wc-a { top: 82px; left: 50px; }
+
+.wc-b { top: 119px; right: 52px; transform: scale(0.7); opacity: 0.8; }
+
+.garden-roof { position: absolute; right: -15px; bottom: 43px; left: -15px; height: 49px; background: rgb(143, 156, 120); transform: skewY(-5deg); }
+
+.plant { position: absolute; z-index: 2; bottom: 35px; width: 52px; height: 95px; }
+
+.plant b { position: absolute; bottom: 0px; left: 10px; width: 35px; height: 32px; border-radius: 5px 5px 12px 12px; background: rgb(213, 130, 114); }
+
+.plant i { position: absolute; bottom: 24px; left: 24px; width: 16px; height: 44px; border-radius: 100% 0px; background: rgb(99, 141, 115); transform: rotate(-23deg); transform-origin: center bottom; }
+
+.plant i:nth-child(2) { transform: rotate(30deg); background: rgb(129, 168, 124); }
+
+.plant i:nth-child(3) { height: 31px; transform: rotate(3deg); background: rgb(114, 153, 110); }
+
+.p-one { left: 18%; }
+
+.p-two { left: 45%; transform: scale(1.2); }
+
+.p-three { right: 12%; transform: scale(0.78); }
+
+.rain-dots { position: absolute; bottom: 22px; left: 14%; z-index: 2; color: rgb(110, 165, 183); font-size: 24px; letter-spacing: 12px; }
+
+.art-caption { display: block; padding-top: 12px; color: rgb(136, 123, 98); font-family: var(--app-font-serif); font-style: italic; font-size: 11px; text-align: center; line-height: 1.25; }
+
+.story-section { position: relative; padding: 105px max(7vw, -565px + 50vw) 120px; background: rgb(230, 241, 233); overflow: hidden; }
+
+.night .story-section { background: rgb(52, 71, 90); }
+
+.story-heading { max-width: 580px; margin: 0px auto 70px; text-align: center; }
+
+.story-heading > p:last-child, .projects-intro > p:last-child { color: var(--muted-ink); font-family: var(--app-font-serif); font-size: 16px; }
+
+.story-road { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+
+.story-stop { min-width: 0px; }
+
+.story-stop:nth-child(2n) { padding-top: 78px; }
+
+.story-doodle { position: relative; height: 175px; margin-bottom: 26px; border-radius: 49% 51% 43% 57% / 54% 43% 57% 46%; background: rgba(255, 255, 255, 0.5); display: grid; place-items: center; overflow: hidden; transition: background 0.8s; }
+
+.night .story-doodle { background: rgba(255, 255, 255, 0.07); }
+
+.first-cloud { background: linear-gradient(155deg, rgb(243, 246, 232), rgb(213, 233, 230)); }
+
+.rain-scene { background: linear-gradient(155deg, rgb(225, 240, 241), rgb(192, 223, 227)); }
+
+.night .first-cloud { background: linear-gradient(155deg, rgb(75, 98, 116), rgb(56, 75, 98)); }
+
+.night .rain-scene { background: linear-gradient(155deg, rgb(67, 91, 114), rgb(53, 73, 97)); }
+
+.mini-buddy { width: 140px; }
+
+.story-number, .project-index { color: rgb(119, 151, 155); font-size: 9px; font-weight: 800; letter-spacing: 0.14em; }
+
+.story-stop h3 { margin: 10px 0px 8px; font-family: var(--app-font-serif); font-size: 24px; line-height: 1.03; font-weight: 500; }
+
+.story-stop p { max-width: 225px; color: var(--muted-ink); font-family: var(--app-font-serif); font-size: 13px; line-height: 1.65; }
+
+.story-thread { position: absolute; top: 54%; left: 9%; width: 82%; border-top: 1px dashed rgb(168, 196, 183); transform: rotate(-5deg); }
+
+.rain-scene .little-cloud, .sunset-scene .little-cloud, .sleepy-scene .little-cloud { position: absolute; width: 115px; color: rgb(255, 253, 247); }
+
+.rain-scene .little-cloud { top: 47px; color: rgb(187, 219, 224); }
+
+.rain-drop { position: absolute; color: rgb(120, 182, 199); font-family: var(--app-font-serif); font-size: 38px; transform: rotate(130deg); }
+
+.rain-drop:nth-child(1) { top: 68px; left: 27%; }
+
+.rain-drop:nth-child(2) { top: 103px; left: 47%; }
+
+.rain-drop:nth-child(3) { top: 76px; right: 24%; }
+
+.sunset-scene { background: linear-gradient(rgb(245, 215, 180), rgb(237, 175, 156)) !important; }
+
+.setting-sun { position: absolute; top: 36px; width: 84px; height: 84px; border-radius: 50%; background: rgb(248, 216, 120); box-shadow: rgba(255, 239, 198, 0.25) 0px 0px 0px 15px; }
+
+.sunset-scene .little-cloud { top: 98px; color: rgb(255, 244, 223); }
+
+.sleepy-scene { background: rgb(202, 217, 226) !important; }
+
+.night .sleepy-scene { background: rgba(236, 239, 233, 0.1) !important; }
+
+.tiny-moon { position: absolute; right: 45px; top: 34px; color: rgb(233, 201, 105); font-size: 33px; }
+
+.tiny-stars { position: absolute; top: 28px; left: 33px; color: rgb(227, 198, 110); font-size: 18px; }
+
+.projects-section { position: relative; padding: 116px max(7vw, -550px + 50vw) 93px; }
+
+.projects-intro { margin: 0px 0px 65px 4%; }
+
+.projects-intro h2 { margin-bottom: 18px; }
+
+.project-card { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: clamp(35px, 8vw, 105px); margin: 0px 0px 93px; }
+
+.project-card:nth-of-type(2n+1) { grid-template-columns: 0.9fr 1.1fr; }
+
+.project-card:nth-of-type(2n+1) .project-art { order: 2; }
+
+.project-card:nth-of-type(2n+1) .project-details { order: 1; padding-left: 14%; }
+
+.project-art { position: relative; min-height: 300px; overflow: hidden; border-radius: 48% 52% 42% 58% / 53% 43% 57% 47%; display: grid; place-items: center; }
+
+.rain-art { background: linear-gradient(145deg, rgb(217, 237, 240), rgb(189, 220, 225)); }
+
+.rain-art-cloud { position: absolute; z-index: 2; top: 52px; width: 138px; color: rgb(255, 253, 248); }
+
+.rain-art-cloud .little-cloud { filter: drop-shadow(rgba(69, 108, 119, 0.12) 0px 7px 4px); }
+
+.rain-lines { position: absolute; inset: 80px 14% 40px; display: flex; justify-content: space-around; }
+
+.rain-lines i { width: 2px; height: 70px; border-radius: 5px; background: rgba(103, 174, 190, 0.6); transform: rotate(15deg); animation: 1.2s linear 0s infinite normal none running rain-fall; }
+
+.rain-lines i:nth-child(2n) { margin-top: 35px; animation-delay: -0.45s; }
+
+.rain-lines i:nth-child(3n) { height: 42px; animation-delay: -0.8s; }
+
+.rain-art:not(.raining) .rain-lines { opacity: 0; }
+
+.puddle { position: absolute; bottom: 57px; width: 180px; height: 20px; border-radius: 50%; background: rgba(110, 174, 185, 0.36); }
+
+.rain-art-caption { position: absolute; bottom: 23px; color: rgb(94, 132, 144); font-family: var(--app-font-serif); font-style: italic; font-size: 12px; }
+
+.project-details { max-width: 345px; }
+
+.project-details h3 { margin: 11px 0px 13px; font-size: 24px; letter-spacing: 0.075em; }
+
+.project-details p { color: var(--muted-ink); font-family: var(--app-font-serif); font-size: 15px; line-height: 1.65; }
+
+.text-button { display: inline-flex; gap: 18px; align-items: center; margin-top: 9px; padding: 0px 0px 6px; border-width: 0px 0px 1px; border-style: none none solid; border-color: currentcolor currentcolor rgb(157, 184, 182); border-image: none; color: var(--ink); background: transparent; cursor: pointer; font-family: var(--app-font-serif); font-size: 14px; }
+
+.text-button span { color: rgb(112, 151, 162); transition: transform 0.2s; }
+
+.text-button:hover span { transform: translate(3px, -3px); }
+
+.sunset-art { background: linear-gradient(160deg, rgb(245, 212, 176), rgb(238, 167, 157) 65%, rgb(197, 140, 157)); transition: background 0.6s; }
+
+.sunset-art.sunset-1 { background: linear-gradient(160deg, rgb(242, 200, 199), rgb(223, 156, 170) 65%, rgb(161, 139, 169)); }
+
+.sunset-art.sunset-2 { background: linear-gradient(160deg, rgb(227, 214, 199), rgb(184, 164, 198) 65%, rgb(129, 148, 176)); }
+
+.sunset-sun { position: absolute; top: 56px; left: calc(50% - 46px); width: 92px; height: 92px; border-radius: 50%; background: rgb(255, 219, 134); box-shadow: rgba(255, 240, 192, 0.22) 0px 0px 0px 17px; }
+
+.sunset-hill { position: absolute; bottom: -40px; width: 120%; height: 145px; border-radius: 50% 50% 0px 0px; }
+
+.hill-back { left: -45%; background: rgb(166, 167, 160); }
+
+.hill-front { right: -42%; bottom: -68px; background: rgb(125, 149, 135); }
+
+.sun-cloud { position: absolute; z-index: 1; width: 95px; color: rgb(255, 246, 232); }
+
+.cloud-left { top: 82px; left: 13%; }
+
+.cloud-right { top: 112px; right: 11%; transform: scale(0.65); }
+
+.sunset-caption { position: absolute; bottom: 26px; z-index: 2; color: rgb(255, 246, 233); font-family: var(--app-font-serif); font-size: 12px; font-style: italic; }
+
+.dream-art { background: rgb(233, 219, 228); }
+
+.dream-paper { position: relative; width: 66%; min-height: 186px; padding: 32px 20px 18px; border: 1px solid rgba(177, 150, 166, 0.35); background: rgb(255, 250, 242); box-shadow: rgba(135, 123, 144, 0.12) 7px 8px 0px; transform: rotate(-4deg); text-align: center; }
+
+.dream-paper p { min-height: 47px; margin: 28px 0px 21px; color: rgb(96, 118, 138); font-family: var(--app-font-serif); font-size: 16px; line-height: 1.3; }
+
+.dream-paper small { color: rgb(163, 141, 155); font-size: 8px; font-weight: 800; letter-spacing: 0.11em; }
+
+.dream-moon { position: absolute; top: 10px; left: 18px; color: rgb(228, 186, 96); font-size: 27px; }
+
+.dream-star { position: absolute; color: rgb(219, 183, 92); }
+
+.star-a { top: 17px; right: 23px; }
+
+.star-b { top: 58px; right: 17px; color: rgb(216, 156, 166); }
+
+.dream-cloud { position: absolute; right: 10%; bottom: 35px; color: rgb(182, 205, 212); font-size: 58px; }
+
+.projects-footnote { margin-top: -28px; color: rgb(135, 150, 141); font-family: var(--app-font-serif); text-align: center; font-style: italic; font-size: 12px; }
+
+.play-section { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 7vw; align-items: center; padding: 114px max(7vw, -550px + 50vw) 120px; background: rgb(217, 233, 232); }
+
+.night .play-section { background: rgb(59, 80, 99); }
+
+.play-copy { max-width: 330px; }
+
+.play-copy h2 { font-size: clamp(48px, 5vw, 65px); }
+
+.play-copy > p:not(.eyebrow) { max-width: 295px; color: var(--muted-ink); font-family: var(--app-font-serif); font-size: 15px; line-height: 1.7; }
+
+.play-tip { margin-top: 30px; color: rgb(118, 150, 150); font-size: 9px; letter-spacing: 0.16em; font-weight: 800; }
+
+.play-tip span { margin-left: 12px; font-size: 17px; }
+
+.playfield { position: relative; min-height: 395px; overflow: hidden; border: 1px solid rgba(114, 151, 157, 0.25); border-radius: 52% 48% 46% 54% / 43% 51% 49% 57%; background: linear-gradient(rgb(200, 228, 232) 0%, rgb(233, 240, 220) 72%, rgb(215, 231, 211) 72%); }
+
+.night .playfield { background: linear-gradient(rgb(68, 88, 110) 0%, rgb(96, 115, 128) 72%, rgb(104, 127, 120) 72%); }
+
+.playfield-label { position: absolute; z-index: 1; top: 25px; left: 50%; transform: translateX(-50%); color: rgb(119, 148, 153); font-family: var(--app-font-serif); font-size: 12px; font-style: italic; white-space: nowrap; }
+
+.sky-item { position: absolute; z-index: 2; width: 80px; height: 52px; padding: 0px; border: 0px; color: rgb(255, 253, 248); background: transparent; cursor: pointer; transition: transform 0.4s, opacity 0.4s; animation: 5s ease-in-out 0s infinite normal none running cloud-float; }
+
+.sky-item:hover { transform: scale(1.15); }
+
+.sky-item.cloud-away { opacity: 0; transform: translate(125px, -35px) rotate(14deg) scale(0.65); pointer-events: none; }
+
+.sky-item .little-cloud { width: 100%; }
+
+.cloud-position-one { top: 25%; left: 20%; }
+
+.cloud-position-two { top: 41%; right: 16%; animation-delay: -1.7s; }
+
+.cloud-position-three { top: 56%; left: 32%; animation-delay: -3.2s; transform: scale(0.72); }
+
+.sky-star { position: absolute; z-index: 4; padding: 8px; border: 0px; color: rgb(232, 189, 89); background: transparent; cursor: pointer; font-size: 21px; line-height: 1; transition: transform 0.2s, color 0.2s; }
+
+.sky-star:hover { color: rgb(223, 168, 62); transform: scale(1.4) rotate(15deg); }
+
+.star-position-0 { top: 23%; right: 25%; }
+
+.star-position-1 { top: 45%; left: 11%; }
+
+.star-position-2 { top: 19%; left: 34%; }
+
+.star-position-3 { top: 60%; right: 20%; }
+
+.star-position-4 { top: 34%; right: 40%; }
+
+.sparkle-burst { position: absolute; inset: -3px; color: rgb(245, 211, 114); animation: 0.8s ease-out 0s 1 normal both running sparkle; }
+
+.playfield-hill { position: absolute; bottom: -58px; left: -5%; width: 110%; height: 120px; border-radius: 50% 50% 0px 0px; background: rgb(185, 210, 177); }
+
+.night .playfield-hill { background: rgb(94, 118, 107); }
+
+.play-nimbo { position: absolute; z-index: 3; bottom: 27px; left: 5%; width: 92px; }
+
+.play-nimbo svg { filter: drop-shadow(rgba(75, 110, 122, 0.12) 0px 3px 3px); }
+
+.playfield-grass { position: absolute; z-index: 1; bottom: 40px; left: 20%; color: rgb(130, 157, 126); font-size: 20px; }
+
+.playfield-message { position: absolute; z-index: 2; bottom: 20px; left: 0px; width: 100%; color: rgb(101, 127, 130); text-align: center; font-family: var(--app-font-serif); font-size: 12px; }
+
+.night .playfield-message, .night .playfield-label { color: rgb(224, 227, 215); }
+
+.ending-section { position: relative; padding: 105px 22px 112px; overflow: hidden; text-align: center; background: var(--cream); }
+
+.ending-section .eyebrow { margin-bottom: 18px; }
+
+.ending-section h2 { margin-bottom: 19px; }
+
+.ending-note { color: var(--muted-ink); font-family: var(--app-font-serif); font-size: 15px; }
+
+.ending-cloud { position: absolute; top: 32px; left: 14%; width: 100px; color: rgb(213, 233, 233); transform: rotate(-9deg); }
+
+.ending-star { position: absolute; right: 18%; top: 53px; color: rgb(230, 189, 95); font-size: 28px; }
+
+.back-to-top { display: inline-flex; gap: 13px; margin-top: 23px; padding: 12px 19px; border: 1px solid var(--line); border-radius: 30px; color: var(--ink); text-decoration: none; font-family: var(--app-font-serif); font-size: 13px; transition: transform 0.2s; }
+
+.back-to-top:hover { transform: translateY(-3px); }
+
+.back-to-top span { color: rgb(114, 156, 156); }
+
+.site-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; padding: 25px max(5vw, -590px + 50vw); border-top: 1px solid var(--line); color: var(--muted-ink); background: var(--paper); font-size: 10px; letter-spacing: 0.02em; transition: background-color 0.8s; }
+
+.footer-mark { font-size: 19px; }
+
+.credits { width: 100%; text-align: center; opacity: 0.8; }
+
+a:focus-visible, button:focus-visible { outline: rgb(87, 155, 177) solid 2px; outline-offset: 4px; }
+
+@keyframes cloud-float { 
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wake-cloud-drift { 
+  0% { transform: translateX(-55vw); }
+  100% { transform: translateX(55vw); }
+}
+
+@keyframes coat-sway { 
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-1.5deg); }
+}
+
+@keyframes rain-fall { 
+  0% { transform: translateY(-12px) rotate(15deg); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translateY(45px) rotate(15deg); opacity: 0; }
+}
+
+@keyframes sparkle { 
+  0% { opacity: 1; transform: scale(0.2) rotate(0deg); }
+  100% { opacity: 0; transform: scale(2.1) rotate(55deg); }
+}
+
+@keyframes wake-away { 
+  100% { opacity: 0; visibility: hidden; transform: translateY(-10px); }
+}
+
+@keyframes arrive { 
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+
+@media (max-width: 760px) {
+  html { scroll-padding-top: 65px; }
+  .site-header { height: 68px; padding: 0px 18px; }
+  .site-header nav { gap: 13px; }
+  .site-header nav a { font-size: 9px; letter-spacing: 0.04em; }
+  .wordmark { font-size: 23px; }
+  .mood-toggle { min-height: 37px; padding: 0px 10px; gap: 5px; font-size: 10px; }
+  .toggle-sun { font-size: 16px; }
+  .hero { min-height: 770px; }
+  .hero-inner { min-height: 700px; padding: 50px 25px 35px; grid-template-columns: 1fr; gap: 0px; align-content: start; text-align: center; }
+  .hero-copy { padding: 7px 0px 0px; }
+  .hero-copy .eyebrow { margin-bottom: 17px; }
+  .hero h1 { font-size: clamp(62px, 17vw, 88px); }
+  .tagline { margin: 19px 0px 18px; font-size: 26px; }
+  .hero-sky { height: 340px; margin-top: -3px; }
+  .hero-cloud-wrap { width: min(86vw, 345px); margin-top: -10px; }
+  .raincoat-note { right: 2%; top: 31%; font-size: 11px; }
+  .watch-note { bottom: 8px; font-size: 13px; }
+  .orbit-one { left: 9%; top: 19%; }
+  .orbit-two { right: 12%; top: 12%; }
+  .orbit-three { bottom: 24%; left: 8%; }
+  .moon-button { top: 15px; right: 18px; width: 38px; height: 38px; }
+  .scroll-cue { bottom: 19px; }
+  .secret-note { top: 59px; right: 15px; }
+  .intro-section { grid-template-columns: 1fr; gap: 40px; padding: 115px 27px 83px; }
+  .section-stamp { top: 22px; left: 25px; width: 64px; height: 64px; font-size: 9px; }
+  .intro-copy { max-width: none; padding-top: 17px; }
+  .intro-copy h2, .story-heading h2, .projects-intro h2, .play-copy h2, .ending-section h2 { font-size: 49px; }
+  .garden-art { max-width: 430px; width: 90%; }
+  .garden-window { height: 255px; }
+  .story-section { padding: 84px 27px 91px; }
+  .story-heading { margin-bottom: 47px; }
+  .story-road { grid-template-columns: 1fr 1fr; gap: 30px 18px; }
+  .story-stop:nth-child(2n) { padding-top: 35px; }
+  .story-doodle { height: 140px; margin-bottom: 18px; }
+  .story-stop h3 { font-size: 21px; }
+  .story-stop p { font-size: 12px; }
+  .story-thread { top: 54%; }
+  .projects-section { padding: 82px 25px 70px; }
+  .projects-intro { margin: 0px 0px 43px 3%; }
+  .project-card, .project-card:nth-of-type(2n+1) { grid-template-columns: 1fr; gap: 20px; margin-bottom: 64px; }
+  .project-card:nth-of-type(2n+1) .project-art, .project-card:nth-of-type(2n+1) .project-details { order: initial; padding-left: 0px; }
+  .project-art { min-height: 265px; width: min(100%, 410px); justify-self: center; }
+  .project-details { max-width: 430px; padding: 0px 5%; }
+  .project-details h3 { font-size: 22px; }
+  .project-details p { margin-top: 8px; }
+  .projects-footnote { margin-top: -20px; }
+  .play-section { grid-template-columns: 1fr; gap: 36px; padding: 82px 25px 90px; }
+  .play-copy { max-width: 490px; }
+  .play-copy h2 { margin-bottom: 18px; }
+  .playfield { min-height: 350px; width: 100%; }
+  .ending-section { padding: 87px 23px 86px; }
+  .ending-cloud { left: 5%; width: 72px; }
+  .ending-star { right: 8%; top: 38px; }
+  .site-footer { justify-content: center; text-align: center; padding: 24px 18px; gap: 12px 20px; }
+  .credits { margin-top: 4px; }
+}
+
+@media (max-width: 390px) {
+  .site-header nav { gap: 9px; }
+  .site-header nav a { font-size: 8px; }
+  .mood-toggle { padding: 0px 8px; }
+  .hero { min-height: 735px; }
+  .hero-inner { min-height: 670px; }
+  .hero-sky { height: 315px; }
+  .raincoat-note { right: -2%; }
+  .playfield { min-height: 315px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+@property --tw-translate-x { syntax: "*"; inherits: false; initial-value: 0; }
+
+@property --tw-translate-y { syntax: "*"; inherits: false; initial-value: 0; }
+
+@property --tw-translate-z { syntax: "*"; inherits: false; initial-value: 0; }
+
+@property --tw-rotate-x { syntax: "*"; inherits: false; }
+
+@property --tw-rotate-y { syntax: "*"; inherits: false; }
+
+@property --tw-rotate-z { syntax: "*"; inherits: false; }
+
+@property --tw-skew-x { syntax: "*"; inherits: false; }
+
+@property --tw-skew-y { syntax: "*"; inherits: false; }
+
+@property --tw-space-y-reverse { syntax: "*"; inherits: false; initial-value: 0; }
+
+@property --tw-space-x-reverse { syntax: "*"; inherits: false; initial-value: 0; }
+
+@property --tw-border-style { syntax: "*"; inherits: false; initial-value: solid; }
+
+@property --tw-leading { syntax: "*"; inherits: false; }
+
+@property --tw-font-weight { syntax: "*"; inherits: false; }
+
+@property --tw-tracking { syntax: "*"; inherits: false; }
+
+@property --tw-ordinal { syntax: "*"; inherits: false; }
+
+@property --tw-slashed-zero { syntax: "*"; inherits: false; }
+
+@property --tw-numeric-figure { syntax: "*"; inherits: false; }
+
+@property --tw-numeric-spacing { syntax: "*"; inherits: false; }
+
+@property --tw-numeric-fraction { syntax: "*"; inherits: false; }
+
+@property --tw-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; }
+
+@property --tw-shadow-color { syntax: "*"; inherits: false; }
+
+@property --tw-shadow-alpha { syntax: "<percentage>"; inherits: false; initial-value: 100%; }
+
+@property --tw-inset-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; }
+
+@property --tw-inset-shadow-color { syntax: "*"; inherits: false; }
+
+@property --tw-inset-shadow-alpha { syntax: "<percentage>"; inherits: false; initial-value: 100%; }
+
+@property --tw-ring-color { syntax: "*"; inherits: false; }
+
+@property --tw-ring-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; }
+
+@property --tw-inset-ring-color { syntax: "*"; inherits: false; }
+
+@property --tw-inset-ring-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; }
+
+@property --tw-ring-inset { syntax: "*"; inherits: false; }
+
+@property --tw-ring-offset-width { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
+@property --tw-ring-offset-color { syntax: "*"; inherits: false; initial-value: #fff; }
+
+@property --tw-ring-offset-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; }
+
+@property --tw-outline-style { syntax: "*"; inherits: false; initial-value: solid; }
+
+@property --tw-duration { syntax: "*"; inherits: false; }
+
+@property --tw-ease { syntax: "*"; inherits: false; }
+
+@property --tw-content { syntax: "*"; inherits: false; initial-value: ""; }
+
+@keyframes spin { 
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse { 
+  50% { opacity: 0.5; }
+}
+
+@keyframes enter { 
+  0% { opacity: var(--tw-enter-opacity,1); transform: translate3d(var(--tw-enter-translate-x,0),var(--tw-enter-translate-y,0),0)scale3d(var(--tw-enter-scale,1),var(--tw-enter-scale,1),var(--tw-enter-scale,1))rotate(var(--tw-enter-rotate,0)); filter: blur(var(--tw-enter-blur,0)); }
+}
+
+@keyframes exit { 
+  100% { opacity: var(--tw-exit-opacity,1); transform: translate3d(var(--tw-exit-translate-x,0),var(--tw-exit-translate-y,0),0)scale3d(var(--tw-exit-scale,1),var(--tw-exit-scale,1),var(--tw-exit-scale,1))rotate(var(--tw-exit-rotate,0)); filter: blur(var(--tw-exit-blur,0)); }
+}
+
+@keyframes accordion-down { 
+  0% { height: 0px; }
+  100% { height: var(--radix-accordion-content-height,var(--bits-accordion-content-height,var(--reka-accordion-content-height,var(--kb-accordion-content-height,var(--ngp-accordion-content-height,auto))))); }
+}
+
+@keyframes accordion-up { 
+  0% { height: var(--radix-accordion-content-height,var(--bits-accordion-content-height,var(--reka-accordion-content-height,var(--kb-accordion-content-height,var(--ngp-accordion-content-height,auto))))); }
+  100% { height: 0px; }
+}
+
+@keyframes caret-blink { 
+  0%, 70%, 100% { opacity: 1; }
+  20%, 50% { opacity: 0; }
+}
+
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+  *, ::before, ::after, ::backdrop { --tw-translate-x: 0; --tw-translate-y: 0; --tw-translate-z: 0; --tw-rotate-x: initial; --tw-rotate-y: initial; --tw-rotate-z: initial; --tw-skew-x: initial; --tw-skew-y: initial; --tw-space-y-reverse: 0; --tw-space-x-reverse: 0; --tw-border-style: solid; --tw-leading: initial; --tw-font-weight: initial; --tw-tracking: initial; --tw-ordinal: initial; --tw-slashed-zero: initial; --tw-numeric-figure: initial; --tw-numeric-spacing: initial; --tw-numeric-fraction: initial; --tw-shadow: 0 0 #0000; --tw-shadow-color: initial; --tw-shadow-alpha: 100%; --tw-inset-shadow: 0 0 #0000; --tw-inset-shadow-color: initial; --tw-inset-shadow-alpha: 100%; --tw-ring-color: initial; --tw-ring-shadow: 0 0 #0000; --tw-inset-ring-color: initial; --tw-inset-ring-shadow: 0 0 #0000; --tw-ring-inset: initial; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-offset-shadow: 0 0 #0000; --tw-outline-style: solid; --tw-duration: initial; --tw-ease: initial; --tw-content: ""; --tw-animation-delay: 0s; --tw-animation-direction: normal; --tw-animation-duration: initial; --tw-animation-fill-mode: none; --tw-animation-iteration-count: 1; --tw-enter-blur: 0; --tw-enter-opacity: 1; --tw-enter-rotate: 0; --tw-enter-scale: 1; --tw-enter-translate-x: 0; --tw-enter-translate-y: 0; --tw-exit-blur: 0; --tw-exit-opacity: 1; --tw-exit-rotate: 0; --tw-exit-scale: 1; --tw-exit-translate-x: 0; --tw-exit-translate-y: 0; }
+}
+}</style>
+</head>
+<body>
+<div id="root"><main class="nimbo-app day is-ready"><div aria-hidden="true" class="paper-grain"></div><header class="site-header"><a aria-label="Nimbo home" class="wordmark" href="#home">nimbo<span>☁️</span></a><nav aria-label="Main navigation"><a href="#little-world">the story</a><a href="#projects">little projects</a><a href="#play">play</a></nav><button aria-label="Switch to night mode" aria-pressed="false" class="mood-toggle" data-testid="button-mood-toggle" type="button"><span class="toggle-sun">☼</span><span>day sky</span></button></header><section aria-labelledby="hero-title" class="hero scene" id="home"><div class="hero-inner"><div class="hero-copy"><p class="eyebrow"><span class="tiny-spark">✦</span> a little cloud on the internet</p><h1 id="hero-title">Hi, I’m<br/><span>Nimbo</span> ☁️</h1><p class="tagline">I make little skies<br/>for big dreams.</p><a class="hand-link" href="#little-world">Come say hello <span aria-hidden="true">↓</span></a></div><div class="hero-sky"><span class="orbit orbit-one">✦</span><span class="orbit orbit-two">✧</span><span class="orbit orbit-three">·</span><div class="hero-cloud-wrap"><button aria-label="Say hello to Nimbo" class="nimbo-character" data-testid="button-nimbo-greeting" type="button"><svg aria-label="Nimbo, a cloud in a yellow raincoat" role="img" viewbox="0 0 360 310"><ellipse cx="183" cy="281" fill="rgba(88,126,151,.12)" rx="116" ry="15"></ellipse><g class="buddy-cloud"><path d="M74 206c-31 0-53-21-53-49 0-27 22-48 50-48 7-45 41-75 83-75 39 0 69 25 80 60 34-4 65 19 65 53 0 33-26 59-62 59H74Z" fill="#fffdf8" stroke="#d9e5e8" stroke-width="4"></path><path d="M93 184c24-28 56-34 91-24 25 8 47 8 77-5-7 24-24 40-52 45-47 9-83 0-116-16Z" fill="#f7fbfa" opacity=".8"></path><g><ellipse cx="133" cy="139" fill="#475d70" rx="9" ry="12"></ellipse><ellipse cx="207" cy="139" fill="#475d70" rx="9" ry="12"></ellipse><circle cx="134" cy="135" fill="white" r="3"></circle><circle cx="208" cy="135" fill="white" r="3"></circle></g><ellipse cx="109" cy="158" fill="#f6b9b2" opacity=".65" rx="12" ry="6"></ellipse><ellipse cx="230" cy="158" fill="#f6b9b2" opacity=".65" rx="12" ry="6"></ellipse><path d="M157 157q10 11 20 0" fill="none" stroke="#586c78" stroke-linecap="round" stroke-width="3.5"></path></g><g class="raincoat"><path d="M106 193q76-27 151 0l25 93q-85 22-201 0l25-93Z" fill="#f5cd65" stroke="#d7aa47" stroke-width="4"></path><path d="M105 200q27 24 51 18l15-25M255 200q-27 24-51 18l-15-25" fill="#ffdf82" stroke="#d7aa47" stroke-linejoin="round" stroke-width="4"></path><path d="m164 197 18 25 18-25" fill="#f8d775" stroke="#d7aa47" stroke-linejoin="round" stroke-width="3"></path><circle cx="183" cy="241" fill="#a98242" r="4"></circle><circle cx="183" cy="260" fill="#a98242" r="4"></circle><path d="M98 224q-16 9-17 26M265 224q16 9 17 26" fill="none" stroke="#d7aa47" stroke-linecap="round" stroke-width="5"></path></g></svg></button></div><div class="raincoat-note">my very first<br/>raincoat!</div><p class="watch-note">Move your cursor. Nimbo is watching 👀</p></div></div><a aria-label="Scroll to Nimbo's story" class="scroll-cue" href="#little-world"><span></span> scroll a little</a><button aria-label="Switch to night sky to find the moon" class="moon-button" data-testid="button-secret-moon" type="button">☾</button></section><section class="intro-section paper-section" id="little-world"><div class="section-stamp">a note from<br/>above the roof</div><div class="intro-copy"><p class="eyebrow">VERY NICE TO MEET YOU</p><h2>Small cloud.<br/><em>Big, soft feelings.</em></h2><p>I was born above a forgotten rooftop garden, where the rain had nowhere to be and the evening had all the time in the world.</p><p>Now I collect the good bits of the sky — a raindrop, a last bit of sunset, a pinch of moonlight — and tuck them away for anyone who needs a softer moment.</p><div class="signature">with a little puff,<br/><span>nimbo</span></div></div><div aria-label="A tiny rooftop garden after rain" class="garden-art"><div class="garden-window"><div class="window-moon"></div><div class="window-cloud wc-a"></div><div class="window-cloud wc-b"></div><div class="garden-roof"></div><div class="plant p-one"><i></i><i></i><i></i><b></b></div><div class="plant p-two"><i></i><i></i><i></i><b></b></div><div class="plant p-three"><i></i><i></i><i></i><b></b></div><div class="rain-dots">·　·　·</div></div><span class="art-caption">the old rooftop garden<br/>where it all began</span></div></section><section aria-labelledby="story-title" class="story-section scene"><div class="story-heading"><p class="eyebrow">A VERY SMALL ORIGIN STORY</p><h2 id="story-title">How to make<br/>a <em>little sky</em></h2><p>It happened slowly, the way the nicest things do.</p></div><div aria-label="Nimbo's story in four scenes" class="story-road"><article class="story-stop stop-one"><div class="story-doodle first-cloud"><button aria-label="Say hello to Nimbo" class="nimbo-character mini-buddy" data-testid="button-nimbo-greeting" type="button"><svg aria-label="Nimbo, a cloud in a yellow raincoat" role="img" viewbox="0 0 360 310"><ellipse cx="183" cy="281" fill="rgba(88,126,151,.12)" rx="116" ry="15"></ellipse><g class="buddy-cloud"><path d="M74 206c-31 0-53-21-53-49 0-27 22-48 50-48 7-45 41-75 83-75 39 0 69 25 80 60 34-4 65 19 65 53 0 33-26 59-62 59H74Z" fill="#fffdf8" stroke="#d9e5e8" stroke-width="4"></path><path d="M93 184c24-28 56-34 91-24 25 8 47 8 77-5-7 24-24 40-52 45-47 9-83 0-116-16Z" fill="#f7fbfa" opacity=".8"></path><g fill="none" stroke="#475d70" stroke-linecap="round" stroke-width="4"><path d="M123 139q9 9 18 0M199 139q9 9 18 0"></path></g><ellipse cx="109" cy="158" fill="#f6b9b2" opacity=".65" rx="12" ry="6"></ellipse><ellipse cx="230" cy="158" fill="#f6b9b2" opacity=".65" rx="12" ry="6"></ellipse><path d="M161 158q8 4 16 0" fill="none" stroke="#586c78" stroke-linecap="round" stroke-width="3.5"></path></g><g class="raincoat"><path d="M106 193q76-27 151 0l25 93q-85 22-201 0l25-93Z" fill="#f5cd65" stroke="#d7aa47" stroke-width="4"></path><path d="M105 200q27 24 51 18l15-25M255 200q-27 24-51 18l-15-25" fill="#ffdf82" stroke="#d7aa47" stroke-linejoin="round" stroke-width="4"></path><path d="m164 197 18 25 18-25" fill="#f8d775" stroke="#d7aa47" stroke-linejoin="round" stroke-width="3"></path><circle cx="183" cy="241" fill="#a98242" r="4"></circle><circle cx="183" cy="260" fill="#a98242" r="4"></circle><path d="M98 224q-16 9-17 26M265 224q16 9 17 26" fill="none" stroke="#d7aa47" stroke-linecap="round" stroke-width="5"></path></g></svg></button></div><span class="story-number">01 / FIRST CLOUD</span><h3>A little puff<br/>of almost-nothing</h3><p>One quiet morning, a cloud blinked awake above the rooftops.</p></article><article class="story-stop stop-two"><div class="story-doodle rain-scene"><span class="rain-drop">⌁</span><span class="rain-drop">⌁</span><span class="rain-drop">⌁</span><svg aria-hidden="true" class="little-cloud" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg></div><span class="story-number">02 / DISCOVERS RAIN</span><h3>Plink, plink,<br/>wonderful rain</h3><p>Nimbo found that raindrops sound a bit like a lullaby.</p></article><article class="story-stop stop-three"><div class="story-doodle sunset-scene"><span class="setting-sun"></span><svg aria-hidden="true" class="little-cloud" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg></div><span class="story-number">03 / LEARNS SUNSETS</span><h3>Gold on the<br/>edge of everything</h3><p>Every evening left one last warm color to keep.</p></article><article class="story-stop stop-four"><div class="story-doodle sleepy-scene"><span class="tiny-moon">☾</span><span class="tiny-stars">✦ · ✧</span><svg aria-hidden="true" class="little-cloud" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg></div><span class="story-number">04 / MAKES LITTLE SKIES</span><h3>A soft place<br/>to land your day</h3><p>For sleepy visitors, Nimbo makes a sky of their very own.</p></article></div><div aria-hidden="true" class="story-thread"></div></section><section aria-labelledby="projects-title" class="projects-section paper-section" id="projects"><div class="projects-intro"><p class="eyebrow">THINGS NIMBO MADE</p><h2 id="projects-title">Three tiny places<br/>to <em>visit</em></h2><p>Made slowly, with rain and a little imagination.</p></div><article class="project-card rain-card"><div class="project-art rain-art raining"><div class="rain-art-cloud"><svg aria-hidden="true" class="little-cloud" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg></div><div class="rain-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="puddle"></div><span class="rain-art-caption">a gentle little drizzle</span></div><div class="project-details"><span class="project-index">01 / PRESS PLAY</span><h3>RAIN ROOM</h3><p>A tiny rain scene for when your thoughts need somewhere soft to land.</p><button class="text-button" data-testid="button-rain-room" type="button">Pause the rain <span>↗</span></button></div></article><article class="project-card sunset-card"><div class="project-art sunset-art sunset-0"><span class="sunset-sun"></span><span class="sunset-hill hill-back"></span><span class="sunset-hill hill-front"></span><svg aria-hidden="true" class="little-cloud sun-cloud cloud-left" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg><svg aria-hidden="true" class="little-cloud sun-cloud cloud-right" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg><span class="sunset-caption">6:42 pm · apricot hour</span></div><div class="project-details"><span class="project-index">02 / TURN THE EVENING</span><h3>POCKET SUNSET</h3><p>A miniature sunset that changes color whenever the day feels like it.</p><button class="text-button" data-testid="button-pocket-sunset" type="button">Change the sky <span>↗</span></button></div></article><article class="project-card dream-card"><div class="project-art dream-art"><div class="dream-paper"><span class="dream-moon">☾</span><span class="dream-star star-a">✦</span><span class="dream-star star-b">✧</span><p>A little forecast<br/>just for you.</p><small>TONIGHT’S DREAM FORECAST</small></div><div class="dream-cloud">☁</div></div><div class="project-details"><span class="project-index">03 / PEEK INTO TONIGHT</span><h3>DREAM FORECAST</h3><p>A playful little prediction for wherever your day is taking you.</p><button class="text-button" data-testid="button-dream-forecast" type="button">Tell my forecast <span>↗</span></button></div></article><p class="projects-footnote">All skies are local. No password, no clouds to subscribe to.</p></section><section aria-labelledby="play-title" class="play-section scene" id="play"><div class="play-copy"><p class="eyebrow">YOUR TURN, LITTLE VISITOR</p><h2 id="play-title">A sky that<br/><em>plays back.</em></h2><p>Tap a cloud and watch it wander off. Tap a star to wake it up. Nimbo is right here with you.</p><div class="play-tip">TRY IT: TAP THE SKY <span>↘</span></div></div><div aria-label="Interactive sky play area" class="playfield"><span class="playfield-label">nimbo’s little play patch</span><button aria-label="Send this cloud on its way" class="sky-item cloud-position-one"><svg aria-hidden="true" class="little-cloud" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg></button><button aria-label="Send this cloud on its way" class="sky-item cloud-position-two"><svg aria-hidden="true" class="little-cloud" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg></button><button aria-label="Send this cloud on its way" class="sky-item cloud-position-three"><svg aria-hidden="true" class="little-cloud" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg></button><button aria-label="Tap star to make it sparkle" class="sky-star star-position-0" data-testid="button-play-star-0">✧</button><button aria-label="Tap star to make it sparkle" class="sky-star star-position-1" data-testid="button-play-star-1">✧</button><button aria-label="Tap star to make it sparkle" class="sky-star star-position-2" data-testid="button-play-star-2">✧</button><button aria-label="Tap star to make it sparkle" class="sky-star star-position-3" data-testid="button-play-star-3">✧</button><button aria-label="Tap star to make it sparkle" class="sky-star star-position-4" data-testid="button-play-star-4">✧</button><button aria-label="Say hello to Nimbo" class="nimbo-character play-nimbo" data-testid="button-nimbo-greeting" type="button"><svg aria-label="Nimbo, a cloud in a yellow raincoat" role="img" viewbox="0 0 360 310"><ellipse cx="183" cy="281" fill="rgba(88,126,151,.12)" rx="116" ry="15"></ellipse><g class="buddy-cloud"><path d="M74 206c-31 0-53-21-53-49 0-27 22-48 50-48 7-45 41-75 83-75 39 0 69 25 80 60 34-4 65 19 65 53 0 33-26 59-62 59H74Z" fill="#fffdf8" stroke="#d9e5e8" stroke-width="4"></path><path d="M93 184c24-28 56-34 91-24 25 8 47 8 77-5-7 24-24 40-52 45-47 9-83 0-116-16Z" fill="#f7fbfa" opacity=".8"></path><g><ellipse cx="133" cy="139" fill="#475d70" rx="9" ry="12"></ellipse><ellipse cx="207" cy="139" fill="#475d70" rx="9" ry="12"></ellipse><circle cx="135" cy="136" fill="white" r="3"></circle><circle cx="209" cy="136" fill="white" r="3"></circle></g><ellipse cx="109" cy="158" fill="#f6b9b2" opacity=".65" rx="12" ry="6"></ellipse><ellipse cx="230" cy="158" fill="#f6b9b2" opacity=".65" rx="12" ry="6"></ellipse><path d="M157 157q10 11 20 0" fill="none" stroke="#586c78" stroke-linecap="round" stroke-width="3.5"></path></g><g class="raincoat"><path d="M106 193q76-27 151 0l25 93q-85 22-201 0l25-93Z" fill="#f5cd65" stroke="#d7aa47" stroke-width="4"></path><path d="M105 200q27 24 51 18l15-25M255 200q-27 24-51 18l-15-25" fill="#ffdf82" stroke="#d7aa47" stroke-linejoin="round" stroke-width="4"></path><path d="m164 197 18 25 18-25" fill="#f8d775" stroke="#d7aa47" stroke-linejoin="round" stroke-width="3"></path><circle cx="183" cy="241" fill="#a98242" r="4"></circle><circle cx="183" cy="260" fill="#a98242" r="4"></circle><path d="M98 224q-16 9-17 26M265 224q16 9 17 26" fill="none" stroke="#d7aa47" stroke-linecap="round" stroke-width="5"></path></g></svg></button><div class="playfield-hill"></div><span class="playfield-grass">⌁　⌁　⌁　⌁　⌁　⌁</span><div aria-live="polite" class="playfield-message">Soft skies, right at your fingertips.</div></div></section><section class="ending-section"><span class="ending-star">✦</span><svg aria-hidden="true" class="little-cloud ending-cloud" viewbox="0 0 100 54"><path d="M23 49C9 49 2 40 2 29 2 18 11 10 23 10c4-12 14-18 27-18 14 0 25 10 28 23 13-2 21 7 21 17 0 11-8 17-21 17H23Z" fill="currentColor" transform="translate(0 5)"></path></svg><p class="eyebrow">BEFORE YOU FLOAT OFF</p><h2>Take a little<br/><em>sky with you.</em></h2><p class="ending-note">You can come back whenever the day gets a bit too loud.</p><a class="back-to-top" href="#home">Back up to Nimbo <span>↑</span></a></section><footer class="site-footer"><a class="footer-mark" href="#home">nimbo ☁️</a><span>Nimbo © 2026</span><span>Built for haX.baby — Baby’s First Website</span><span class="credits">Original CSS/SVG artwork · No external assets · React + Vite</span></footer></main><div aria-hidden="true" class="secret-cloud"><div class="secret-card"><div style="font-size:52px">☁️💤</div><div>pssst… you found my secret cloud</div><small style="display:block;margin-top:8px;opacity:.7">Nimbo is taking a tiny nap.</small></div></div></div>
+<script>(()=>{
+  const app=document.querySelector('.nimbo-app');
+  if(!app) return;
+  const $=(s,root=document)=>root.querySelector(s), $$=(s,root=document)=>[...root.querySelectorAll(s)];
+  const toggle=$('.mood-toggle');
+  const saved=localStorage.getItem('nimbo-mode');
+  if(saved==='night') app.classList.add('night');
+  function syncMode(){
+    const night=app.classList.contains('night');
+    if(toggle){toggle.setAttribute('aria-label',night?'Switch to day mode':'Switch to night mode'); const span=toggle.querySelector('span:last-child'); if(span) span.textContent=night?'night sky':'day sky'; const sun=toggle.querySelector('.toggle-sun'); if(sun) sun.textContent=night?'☾':'☼';}
+    localStorage.setItem('nimbo-mode',night?'night':'day');
+  }
+  syncMode();
+  toggle?.addEventListener('click',()=>{app.classList.toggle('night');syncMode();});
+
+  // Wake screen fallback.
+  setTimeout(()=>$('.wake-screen')?.classList.add('is-gone'),1300);
+
+  // Nimbo follows pointer with eyes when present.
+  const chars=$$('.nimbo-character');
+  const moveEyes=(x,y)=>chars.forEach(ch=>{
+    const eyes=$$('.eye',ch); if(!eyes.length) return;
+    const r=ch.getBoundingClientRect(); const dx=(x-(r.left+r.width/2))/r.width; const dy=(y-(r.top+r.height/2))/r.height;
+    eyes.forEach(e=>{e.style.transform=`translate(${Math.max(-4,Math.min(4,dx*7))}px,${Math.max(-3,Math.min(3,dy*5))}px)`;});
+  });
+  window.addEventListener('pointermove',e=>moveEyes(e.clientX,e.clientY),{passive:true});
+
+  chars.forEach(ch=>ch.addEventListener('click',()=>{ch.classList.remove('is-bouncy');void ch.offsetWidth;ch.classList.add('is-bouncy');}));
+
+  // Story/project reveal on scroll.
+  const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-view')}),{threshold:.15});
+  $$('.story-stop,.project-card,.play-panel,.ending-section').forEach(el=>observer.observe(el));
+
+  // Project buttons: tiny reactions.
+  const messages=['plink… plink… 🌧️','the sky is changing… 🌅','forecast: a soft little dream ☁️'];
+  $$('.text-button').forEach((b,i)=>b.addEventListener('click',()=>{
+    b.textContent=['Resume the rain ↗','Change it again ↗','Tell me another ↗'][i] || 'Again ↗';
+    const card=b.closest('.project-card'); if(card){card.classList.remove('is-bouncy');void card.offsetWidth;card.classList.add('is-bouncy');}
+    showToast(messages[i]||'a tiny sky happened');
+  }));
+
+  // Interactive sky.
+  $$('.sky-item').forEach((cloud,i)=>cloud.addEventListener('click',()=>{
+    cloud.classList.remove('wander');void cloud.offsetWidth;cloud.classList.add('wander');
+    showToast(['whoosh! ☁️','bye-bye little cloud ☁️','Nimbo says hi! ☁️'][i%3]);
+  }));
+  $$('.sky-star').forEach(star=>star.addEventListener('click',()=>{star.classList.add('awake');setTimeout(()=>star.classList.remove('awake'),700);}));
+
+  // Secret: click the moon five times.
+  const moon=$('.moon-button'); let moonClicks=0, moonTimer;
+  moon?.addEventListener('click',()=>{
+    moonClicks++; clearTimeout(moonTimer); moonTimer=setTimeout(()=>moonClicks=0,1800);
+    if(moonClicks>=5){moonClicks=0; const egg=$('.secret-cloud'); if(egg){egg.classList.add('revealed');setTimeout(()=>egg.classList.remove('revealed'),5000);} showToast('pssst… you found my secret cloud ☁️');}
+  });
+
+  function showToast(text){
+    let t=$('.nimbo-toast'); if(!t){t=document.createElement('div');t.className='nimbo-toast';document.body.appendChild(t);}
+    t.textContent=text;t.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>t.classList.remove('show'),1800);
+  }
+
+  // Add tiny motion styles without changing the original design.
+  const style=document.createElement('style');style.textContent=`
+    .is-bouncy{animation:nimboBounce .55s ease}.in-view{animation:nimboIn .7s ease both}.wander{animation:nimboWander 1.2s ease both}.awake{animation:nimboStar .7s ease}.secret-cloud{opacity:0;pointer-events:none;position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(25,36,52,.38);backdrop-filter:blur(3px);transition:opacity .35s}.secret-cloud.revealed{opacity:1;pointer-events:auto}.secret-cloud .secret-card{padding:28px 32px;border-radius:28px;background:var(--paper);box-shadow:0 18px 60px rgba(0,0,0,.2);text-align:center;font-family:var(--app-font-serif);font-size:24px}.nimbo-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;z-index:90;padding:10px 16px;border-radius:999px;background:var(--paper);color:var(--ink);box-shadow:0 8px 28px rgba(0,0,0,.14);font-family:var(--app-font-serif);transition:.25s}.nimbo-toast.show{opacity:1;transform:translate(-50%,0)}@keyframes nimboBounce{50%{transform:translateY(-8px) rotate(-1deg)} }@keyframes nimboIn{from{opacity:.2;transform:translateY(20px)}to{opacity:1;transform:none}}@keyframes nimboWander{50%{transform:translate(55px,-18px) rotate(4deg)}to{transform:none}}@keyframes nimboStar{50%{transform:scale(1.5) rotate(15deg)}to{transform:none}}
+  `;document.head.appendChild(style);
+})();</script>
+</body>
+</html>
